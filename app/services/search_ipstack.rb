@@ -7,13 +7,14 @@ class SearchIpstack
     new(params).call
   end
 
-  def initialize(query:)
+  def initialize(query)
     @query = query
   end
 
   def call
     convert_query
     ask_ip_stack
+    prepare_response
   end
 
   private
@@ -24,14 +25,24 @@ class SearchIpstack
   end
 
   def ask_ip_stack
-    query_params = { 'access_key' => ENV['IP_STACK'] }
+    query_params = { 'access_key' => ENV['IP_STACK'],
+                     'hostname' => 1,
+                     'fields' => 'main' }
+
     url = URI(BASE_URL + @query)
     url.query =  URI.encode_www_form(query_params)
 
     http = Net::HTTP.new(url.host, url.port);
     request = Net::HTTP::Get.new(url)
 
-    response = JSON.parse http.request(request).body
+    @results = JSON.parse http.request(request).body
+  end
+
+  def prepare_response
+    @response = { query: @query,
+                  message: 'Record DOES NOT exists in our db',
+                  data_source: BASE_URL,
+                  data: @results }
   end
 end
 

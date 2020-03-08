@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_08_140000) do
+ActiveRecord::Schema.define(version: 2020_03_08_190154) do
 
   create_table "ip_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "query"
     t.string "ip"
-    t.string "type"
+    t.string "ip_type"
     t.string "hostname"
     t.string "continent_code"
     t.string "continent"

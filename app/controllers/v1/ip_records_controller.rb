@@ -1,17 +1,18 @@
 class V1::IpRecordsController < ApplicationController
+  before_action :unescape_params, only: [:show]
+
+  def index
+    @ip_records = IpRecord.all
+    render json: @ip_records, status: :ok
+  end
 
   def show
-
-    query = CGI.unescape(params[:query])
-
-    @results = SearchIpstack.call(query: query)
-
-    render json: { message: 'Helo2!',
-                   query: query,
-                   response: @results }, status: :ok
+    @response = FindIpRecord.call(@query) || SearchIpstack.call(@query)
+    render json: @response, status: :ok
   end
 
   def create
+
   end
 
   def destroy
@@ -20,4 +21,9 @@ class V1::IpRecordsController < ApplicationController
   def ip_record_params
     params.require(:ip_record).permit(:query)
   end
+
+  private
+    def unescape_params
+      @query = CGI.unescape(params[:query])
+    end
 end
