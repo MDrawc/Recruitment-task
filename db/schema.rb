@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_03_08_140000) do
 
-  create_table "ip_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "ip_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "query"
     t.string "ip"
     t.string "type"
