@@ -10,6 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_03_08_140000) do
+
+  create_table "ip_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "query"
+    t.string "ip"
+    t.string "type"
+    t.string "hostname"
+    t.string "continent_code"
+    t.string "continent"
+    t.string "country_code"
+    t.string "country"
+    t.string "region_code"
+    t.string "region"
+    t.string "city"
+    t.string "zip"
+    t.decimal "latitude", precision: 10
+    t.decimal "longitude", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["query"], name: "index_ip_records_on_query", unique: true
+  end
 
 end
