@@ -25,7 +25,7 @@ module V1
       def record_already_exists
         if @data = IpRecord.find_by(input: @input)
           @message = 'Record with such input already exists'
-          @source = 'local_db'
+          @source = 'db'
           @status = :unprocessable_entity
           return true
         end
@@ -46,7 +46,7 @@ module V1
         if @record.save
           @message = 'Record successfuly created'
           @data = @record
-          @source = 'local_db'
+          @source = 'db'
           @status = :ok
         else
           @errors[:record] = @record.errors
