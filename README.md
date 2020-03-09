@@ -24,13 +24,13 @@
 
 App should now be running on port 3000 on your Docker daemon. Go to http://localhost:3000 on a web browser to see the Rails Welcome.
 
-### Request: all saved ip/hostname/url geolocation data records
+### Request: show all saved ip/hostname/url geolocation data records
 Send **GET** request to URL: http://localhost:3000/v1/ip_records
 
 Postman example:
 ### Request: check ip/hostname/url geolocation data
 You can look up ip, hostname or URL. URL needs to be HTML safe string.
-If a record with such input exists you will receive its geolocation data. Otherwise, you will receive geolocation data from ipstack api (https://ipstack.com).
+If a record with such input exists you will receive its geolocation data. Otherwise, you will receive corresponding geolocation data from ipstack api (https://ipstack.com).
 
 Send **GET** request to URL: http://localhost:3000/v1/ip-you-want-to-look-up
 
