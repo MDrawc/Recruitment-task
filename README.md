@@ -29,6 +29,10 @@ App should now be running on port 3000 on your Docker daemon. Go to http://local
 Send **GET** request to URL: http://localhost:3000/v1/ip_records
 
 Postman example:
+<p align="center">
+    <img alt="show all" title="show" src="https://i.imgur.com/10Ml25L.png">
+</p>
+
 ### Check ip/hostname/url geolocation data
 You can look up ip, hostname or URL. URL needs to be HTML safe string.
 If a record with such input exists you will receive its geolocation data. Otherwise, you will ip/hostaname/url geolocation data from ipstack api (https://ipstack.com).
@@ -41,6 +45,10 @@ Examples:
 * URL (HTML safe string - unsafe characters replaced with corresponding escape sequence) lookup: http://localhost:3000/v1/https%3A%2F%2Fwww.stillhavethem.com
 
 Postman example:
+<p align="center">
+    <img alt="get request" title="get" src="https://i.imgur.com/JCh8y6B.png">
+</p>
+
 ### Create ip/hostname/url geolocation data record
 You can create geolocation data record based on ip, hostname or URL. URL needs to be HTML safe string.
 
@@ -49,6 +57,9 @@ Send **POST** request to URL: http://localhost:3000/v1/ip-you-want-to-add
 No body is required. Record will be created based on data from ipstack api (https://ipstack.com).
 
 Postman example:
+<p align="center">
+    <img alt="create request" title="create" src="https://i.imgur.com/nhT5cru.png">
+</p>
 
 ### Delete ip/hostname/url geolocation data record
 Destroy geolocation data.
@@ -56,4 +67,6 @@ Destroy geolocation data.
 Send **DELETE** request to URL: http://localhost:3000/v1/input-of-a-record-you-want-to-delete
 
 Postman example:
-
+<p align="center">
+    <img alt="delete" title="delete" src="https://i.imgur.com/h8pgAwT.png">
+</p>
