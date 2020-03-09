@@ -1,29 +1,30 @@
-class FindIpRecord
-  def self.call(params)
-    new(params).call
-  end
+class FindIpRecord < ApplicationService
 
-  def initialize(query)
-    @query = query
+  def initialize(input:, build_resp: true)
+    @input = input
+    @build_resp = build_resp
   end
 
   def call
-    prepare_response if find_ip_record
+    find_ip_record
+    if @build_resp
+      build_response
+    else
+      return @results
+    end
   end
 
   private
 
   def find_ip_record
-    @results = IpRecord.find_by(query: @query)
+    @results = IpRecord.find_by(input: @input)
   end
 
-  def prepare_response
-    @response = { query: @query,
-                  message: 'Record EXISTS in our db',
-                  data_source: 'recruitment_task_db',
-                  data: @results }
+  def build_response
+    response = { input: @input,
+                 message: 'Record EXISTS in our db',
+                 data_source: 'local_db',
+                 data: @results }
   end
 end
-
-
 

@@ -1,27 +1,28 @@
 require 'net/https'
 
-class SearchIpstack
+class SearchIpstack < ApplicationService
   BASE_URL = 'http://api.ipstack.com/'
 
-  def self.call(params)
-    new(params).call
-  end
-
-  def initialize(query)
-    @query = query
+  def initialize(input:, build_resp: true)
+    @input = input
+    @build_resp = build_resp
   end
 
   def call
-    convert_query
+    convert_input
     ask_ip_stack
-    prepare_response
+    if @build_resp
+      build_response
+    else
+      return @results
+    end
   end
 
   private
 
-  def convert_query
-    hostname = URI.parse(CGI.unescape(@query)).host rescue nil
-    @query = hostname || @query
+  def convert_input
+    hostname = URI.parse(CGI.unescape(@input)).host rescue nil
+    @input = hostname || @input
   end
 
   def ask_ip_stack
@@ -29,7 +30,7 @@ class SearchIpstack
                      'hostname' => 1,
                      'fields' => 'main' }
 
-    url = URI(BASE_URL + @query)
+    url = URI(BASE_URL + @input)
     url.query =  URI.encode_www_form(query_params)
 
     http = Net::HTTP.new(url.host, url.port);
@@ -38,11 +39,11 @@ class SearchIpstack
     @results = JSON.parse http.request(request).body
   end
 
-  def prepare_response
-    @response = { query: @query,
-                  message: 'Record DOES NOT exists in our db',
-                  data_source: BASE_URL,
-                  data: @results }
+  def build_response
+    response = { input: @input,
+                 message: 'Record DOES NOT exists in our db',
+                 data_source: BASE_URL,
+                 data: @results }
   end
 end
 
