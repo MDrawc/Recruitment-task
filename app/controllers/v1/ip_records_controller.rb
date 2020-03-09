@@ -7,17 +7,17 @@ class V1::IpRecordsController < ApplicationController
   end
 
   def show
-    response = FindIpRecord.call(input: @input) || SearchIpstack.call(input: @input)
+    response = V1::FindIpRecord.call(input: @input) || V1::SearchIpstack.call(input: @input)
     render json: response, status: :ok
   end
 
   def create
-    response, status = CreateIpRecord.call(input: ip_record_params[:input])
+    response, status = V1::CreateIpRecord.call(input: ip_record_params[:input])
     render json: response, status: status
   end
 
   def destroy
-    response, status = DeleteIpRecord.call(input: @input)
+    response, status = V1::DeleteIpRecord.call(input: @input)
     render json: response, status: status
   end
 
