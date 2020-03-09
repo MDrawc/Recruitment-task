@@ -8,7 +8,7 @@ class FindIpRecord < ApplicationService
   def call
     find_ip_record
     if @build_resp
-      build_response
+      build_response if @record
     else
       return @results
     end
@@ -17,14 +17,14 @@ class FindIpRecord < ApplicationService
   private
 
   def find_ip_record
-    @results = IpRecord.find_by(input: @input)
+    @record = IpRecord.find_by(input: @input)
   end
 
   def build_response
     response = { input: @input,
                  message: 'Record EXISTS in our db',
                  data_source: 'local_db',
-                 data: @results }
+                 data: @record }
   end
 end
 

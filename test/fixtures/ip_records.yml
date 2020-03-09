@@ -1,11 +1,47 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+ip:
+  input: 188.47.159.132
+  ip: 188.47.159.132
+  ip_type: ipv4
+  hostname: public73604.cdma.centertel.pl
+  continent_code: EU
+  continent_name: Europe
+  country_code: PL
+  country_name: Poland
+  region_code: MZ
+  region_name: Mazovia
+  city: Ochota
+  zip: 02-326
+  latitude: 52
+  longitude: 20
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+hostname:
+  input: www.onet.pl
+  ip: 213.180.141.140
+  ip_type: ipv4
+  hostname: sg1.any.onet.pl
+  continent_code: EU
+  continent_name: Europe
+  country_code: PL
+  country_name: Poland
+  region_code: KP
+  region_name: Kujawsko-Pomorskie
+  city: Grudziądz
+  zip: 86-132
+  latitude: 53.50477981567383
+  longitude: 18.625879287719727
+
+url:
+  input: http://www.stillhavethem.com
+  ip: 34.252.13.12
+  ip_type: ipv4
+  hostname: ec2-34-252-13-12.eu-west-1.compute.amazonaws.com
+  continent_code: EU
+  continent_name: Europe
+  country_code: IE
+  country_name: Ireland
+  region_code: L
+  region_name: Leinster
+  city: Dublin
+  zip: null
+  latitude: 53
+  longitude: -6
