@@ -7,8 +7,8 @@ class V1::IpRecordsController < ApplicationController
   end
 
   def show
-    response = V1::FindIpRecord.call(input: @input) || V1::SearchIpstack.call(input: @input)
-    render json: response, status: :ok
+    response, status = V1::ProvideIpData.call(input: @input)
+    render json: response, status: status
   end
 
   def create

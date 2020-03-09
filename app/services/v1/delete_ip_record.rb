@@ -17,31 +17,30 @@ module V1
     end
 
     private
-
-    def find_record
-      @record = IpRecord.find_by(input: @input)
-    end
-
-    def destroy_record
-      if @record.destroy
-        @message = 'Record DESTROYED'
-        @status = :ok
-      else
-        @message = 'Record NOT DESTROYED'
-        @status = :unprocessable_entity
+      def find_record
+        @record = IpRecord.find_by(input: @input)
       end
-    end
 
-    def response
-      response = { input: @input,
-                   message: @message,
+      def destroy_record
+        if @record.destroy
+          @message = 'Record DESTROYED'
+          @status = :ok
+        else
+          @message = 'Record NOT DESTROYED'
+          @status = :unprocessable_entity
+        end
+      end
 
-      }
+      def response
+        response = { input: @input,
+                     message: @message,
 
-      response = response.merge({ data: @record }) if @record
+        }
 
-      response
-    end
+        response = response.merge({ data: @record }) if @record
+
+        response
+      end
   end
 end
 
