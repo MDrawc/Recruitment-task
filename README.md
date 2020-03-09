@@ -24,13 +24,14 @@
 
 App should now be running on port 3000 on your Docker daemon. Go to http://localhost:3000 on a web browser to see the Rails Welcome.
 
-### Request: show all saved ip/hostname/url geolocation data records
+### Making requests
+### Show all saved ip/hostname/url geolocation data records
 Send **GET** request to URL: http://localhost:3000/v1/ip_records
 
 Postman example:
-### Request: check ip/hostname/url geolocation data
+### Check ip/hostname/url geolocation data
 You can look up ip, hostname or URL. URL needs to be HTML safe string.
-If a record with such input exists you will receive its geolocation data. Otherwise, you will receive corresponding geolocation data from ipstack api (https://ipstack.com).
+If a record with such input exists you will receive its geolocation data. Otherwise, you will ip/hostaname/url geolocation data from ipstack api (https://ipstack.com).
 
 Send **GET** request to URL: http://localhost:3000/v1/ip-you-want-to-look-up
 
@@ -40,7 +41,7 @@ Examples:
 * URL (HTML safe string - unsafe characters replaced with corresponding escape sequence) lookup: http://localhost:3000/v1/https%3A%2F%2Fwww.stillhavethem.com
 
 Postman example:
-### Request: create ip/hostname/url geolocation data record
+### Create ip/hostname/url geolocation data record
 You can create geolocation data record based on ip, hostname or URL. URL needs to be HTML safe string.
 
 Send **POST** request to URL: http://localhost:3000/v1/ip-you-want-to-add
@@ -49,8 +50,8 @@ No body is required. Record will be created based on data from ipstack api (http
 
 Postman example:
 
-### Request: destroy ip/hostname/url geolocation data record
-Destroy geolocation data record based on ip, hostname or URL. URL needs to be HTML safe string.
+### Delete ip/hostname/url geolocation data record
+Destroy geolocation data.
 
 Send **DELETE** request to URL: http://localhost:3000/v1/input-of-a-record-you-want-to-delete
 
