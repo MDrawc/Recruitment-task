@@ -28,10 +28,10 @@ class V1::IpRecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     message = response['message']
-    assert_equal 'Record EXISTS in our db' , message
+    assert_equal 'Record exists in db' , message
 
     source = response['data_source']
-    assert_equal 'local_db' , source
+    assert_equal 'db' , source
 
     latitude = response['data']['latitude']
     assert_equal latitude, @existing_record.latitude
@@ -43,10 +43,10 @@ class V1::IpRecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     message = response['message']
-    assert_equal 'Record DOES NOT exists in our db' , message
+    assert_equal 'Record does not exist, found data on ipstack' , message
 
     source = response['data_source']
-    assert_equal 'http://api.ipstack.com/' , source
+    assert_equal 'ipstack' , source
 
     latitude = response['data']['latitude']
     assert_not_nil latitude
@@ -59,7 +59,7 @@ class V1::IpRecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     message = response['message']
-    assert_equal 'Record successfuly CREATED' , message
+    assert_equal 'Record successfuly created' , message
 
     latitude = response['data']['latitude']
     assert_not_nil latitude
@@ -71,19 +71,19 @@ class V1::IpRecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     message = response['message']
-    assert_equal 'Record successfuly CREATED' , message
+    assert_equal 'Record successfuly created' , message
 
     latitude = response['data']['latitude']
     assert_not_nil latitude
   end
 
-  test 'create stupid record' do
-    post v1_path(input: 'stupid')
+  test 'create wrong record' do
+    post v1_path(input: 'wrong')
     response = JSON.parse(@response.body)
     assert_response :success
 
     message = response['message']
-    assert_equal 'Record successfuly CREATED' , message
+    assert_equal 'Record successfuly created' , message
 
     latitude = response['data']['latitude']
     assert_nil latitude
@@ -96,7 +96,7 @@ class V1::IpRecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
 
     message = response['message']
-    assert_equal 'Record with such input ALREADY EXISTS' , message
+    assert_equal 'Record with such input already exists' , message
 
     latitude = response['data']['latitude']
     assert_equal latitude, @existing_record.latitude
@@ -109,7 +109,7 @@ class V1::IpRecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     message = response['message']
-    assert_equal 'Record DESTROYED', message
+    assert_equal 'Record destroyed', message
   end
 
   test 'destroy unexisting record' do
@@ -119,6 +119,6 @@ class V1::IpRecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
 
     message = response['message']
-    assert_equal 'Record NOT FOUND', message
+    assert_equal 'Record not found', message
   end
 end

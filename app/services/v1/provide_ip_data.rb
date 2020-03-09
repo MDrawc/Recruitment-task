@@ -14,7 +14,7 @@ module V1
     private
       def ip_record_exists
         if @data = IpRecord.find_by(input: @input)
-          @message = 'Record EXISTS in db'
+          @message = 'Record exists in db'
           @source = 'db'
           @status = :ok
           return true
@@ -24,7 +24,8 @@ module V1
       def find_on_ip_stack
         @data = V1::SearchIpstack.call(input: @input)
         if @data['error'].nil?
-          @source = 'kicui'
+          @message = 'Record does not exist, found data on ipstack'
+          @source = 'ipstack'
           @status = :ok
         else
           @message = 'Problem with ipstack, read ipstack errors below'

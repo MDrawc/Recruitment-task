@@ -9,7 +9,7 @@ module V1
       if find_record
         destroy_record
       else
-        @message = 'Record NOT FOUND'
+        @message = 'Record not found'
         @status = :unprocessable_entity
       end
 
@@ -23,20 +23,17 @@ module V1
 
       def destroy_record
         if @record.destroy
-          @message = 'Record DESTROYED'
+          @message = 'Record destroyed'
           @status = :ok
         else
-          @message = 'Record NOT DESTROYED'
+          @message = 'Record destroyed'
           @status = :unprocessable_entity
         end
       end
 
       def response
         response = { input: @input,
-                     message: @message,
-
-        }
-
+                     message: @message }
         response = response.merge({ data: @record }) if @record
 
         response
