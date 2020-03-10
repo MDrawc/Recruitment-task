@@ -35,7 +35,7 @@ Postman example:
 
 ### Check ip/hostname/url geolocation data
 You can look up ip, hostname or URL. URL needs to be HTML safe string.
-If a record with such input exists you will receive its geolocation data. Otherwise, you will ip/hostaname/url geolocation data from ipstack api (https://ipstack.com).
+If a record with such input exists you will receive its geolocation data. Otherwise, you will get ip/hostaname/url geolocation data from ipstack api (https://ipstack.com).
 
 Send **GET** request to URL: http://localhost:3000/v1/ip-you-want-to-look-up
 
